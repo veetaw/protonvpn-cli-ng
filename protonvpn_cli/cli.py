@@ -3,6 +3,7 @@ A CLI for ProtonVPN.
 
 Usage:
     protonvpn init
+    protonvpn usage
     protonvpn (c | connect) [<servername>] [-p <protocol>]
     protonvpn (c | connect) [-f | --fastest] [-p <protocol>]
     protonvpn (c | connect) [--cc <code>] [-p <protocol>]
@@ -32,6 +33,7 @@ Options:
 
 Commands:
     init                Initialize a ProtonVPN profile.
+    usage               Open the ProtonVPN-CLI usage guide.
     c, connect          Connect to a ProtonVPN server.
     r, reconnect        Reconnect to the last server.
     d, disconnect       Disconnect the current session.
@@ -51,6 +53,7 @@ import configparser
 import getpass
 import shutil
 import time
+import webbrowser
 # External Libraries
 from docopt import docopt
 # protonvpn-cli Functions
@@ -92,6 +95,11 @@ def cli():
     # Parse arguments
     if args.get("init"):
         init_cli()
+    elif args.get("usage"):
+        webbrowser.open(
+            "https://github.com/ProtonVPN/protonvpn-cli-ng/blob/master/USAGE.md" #noqa
+        )
+        print("Usage guide has been opened in your web browser.")
     elif args.get("c") or args.get("connect"):
         check_root()
         check_init()
