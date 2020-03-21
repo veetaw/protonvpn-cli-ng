@@ -512,7 +512,7 @@ def openvpn_connect(servername, protocol):
                     logger.debug("Failed to connect. IP didn't change")
                     print("[!] Connection failed. Reverting all changes...")
                     disconnect(passed=True)
-                print("Connected!")
+                print("Connected! NEW IP: {0}".format(new_ip))
                 logger.debug("Connection successful")
                 break
             # If Authentication failed
